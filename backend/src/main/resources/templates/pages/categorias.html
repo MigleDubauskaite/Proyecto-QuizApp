@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorías - Quiz App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/juego.css}">
+    <link rel="stylesheet" th:href="@{/css/categorias.css}">
+</head>
+<body>
+    <header th:replace="~{layout/base :: header-comun}"></header>
+
+    <main class="container my-5">
+        <h1 class="mb-4">Categorías</h1>
+        <p class="lead text-muted">Temáticas disponibles para jugar. Selecciona una o varias en la página de inicio.</p>
+
+        <div class="row mt-4" th:if="${categorias != null and !categorias.isEmpty()}">
+            <div class="col-md-6">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center" th:each="cat : ${categorias}">
+                        <span th:text="${cat}">Categoría</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="alert alert-info mt-3" th:if="${categorias == null or categorias.isEmpty()}">
+            No hay categorías cargadas todavía. Añade preguntas desde el módulo de administración.
+        </div>
+
+        <p class="mt-4">
+            <a th:href="@{/home}" class="btn btn-primary">Volver al inicio</a>
+        </p>
+    </main>
+
+    <footer th:replace="~{layout/base :: footer-comun}"></footer>
+</body>
+</html>

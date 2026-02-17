@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/juego.css}">
+</head>
+<body>
+
+<header th:replace="~{layout/base :: header-comun}"></header>
+
+<div class="main-wrapper">
+    <header class="content-section text-center mb-5 mt-4">
+        <div class="main-logo-container">
+            <div class="main-logo">Quiz-App</div>
+        </div>
+        <h1 class="display-5 fw-bold" th:text="${mensaje}">Prepárate para el Reto</h1>
+        <p class="text-sky">Configura tu partida en menos de un minuto</p>
+    </header>
+
+    <form th:action="@{/jugar}" method="post" class="central-flow">
+        
+        <section class="config-card">
+            <h2 class="step-title">
+                <span class="material-symbols-rounded step-icon">category</span>
+                <span class="badge-step">1</span> Temas
+            </h2>
+            <div class="options-container">
+                <div th:each="cat : ${categorias}" class="option-item">
+                    <input type="checkbox" class="btn-check" name="categorias"
+                           th:id="'cat-' + ${cat}" th:value="${cat}" autocomplete="off">
+                    <label class="btn btn-pill" th:for="'cat-' + ${cat}" th:text="${cat}">Categoría</label>
+                </div>
+            </div>
+        </section>
+
+        <section class="config-card">
+            <h2 class="step-title">
+                <span class="material-symbols-rounded step-icon">quiz</span>
+                <span class="badge-step">2</span> Formato
+            </h2>
+            <div class="options-container">
+                <div th:each="tipo : ${tipos}" class="option-item">
+                    <input type="checkbox" class="btn-check" name="tiposStr"
+                           th:id="'tipo-' + ${tipo}" th:value="${tipo}" autocomplete="off">
+                    <label class="btn btn-pill variant-coral" th:for="'tipo-' + ${tipo}"
+                           th:text="${tipo.name() == 'VF' ? 'Verdadero / Falso' :
+                                     (tipo.name() == 'UNICA' ? 'Respuesta Única' : 'Opción Múltiple')}">
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <section class="config-card">
+            <h2 class="step-title">
+                <span class="material-symbols-rounded step-icon">speed</span>
+                <span class="badge-step">3</span> Desafío
+            </h2>
+            <div class="quantity-grid">
+                <div th:each="cant : ${opcionesCantidad}" class="quantity-item">
+                    <input type="radio" class="btn-check" name="cantidad"
+                           th:id="'cant-' + ${cant}" th:value="${cant}"
+                           th:checked="${cant == 10}" autocomplete="off">
+                    <label class="btn btn-circle" th:for="'cant-' + ${cant}">
+                        <span class="val" th:text="${cant}">10</span>
+                        <span class="lab">Preqs</span>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <div class="action-zone text-center">
+            <button type="submit" class="btn-launch">
+                ¡EMPEZAR AHORA!
+            </button>
+        </div>
+    </form>
+
+    <footer th:replace="~{layout/base :: footer-comun}"></footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+:root {
+    --coral: #FF5B5B;
+    --sky: #9CCFFF;
+    --petrol: #088395;
+    --dark-petrol: #043e47;
+    --card-bg: rgba(255, 255, 255, 0.05);
+}
+
+body {
+    background-color: var(--dark-petrol);
+    background-image: radial-gradient(circle at 50% 0%, #0a5c68 0%, var(--dark-petrol) 70%);
+    color: white;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Contenedor principal */
+main.container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+main h1 {
+    color: white;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+main .lead {
+    color: var(--sky);
+    opacity: 0.9;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Lista de categorías con estilo de cards */
+main .list-group {
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+main .list-group-item {
+    background: var(--card-bg);
+    border: 1px solid rgba(156, 207, 255, 0.1);
+    color: white;
+    padding: 16px 24px;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+}
+
+main .list-group-item:not(:last-child) {
+    border-bottom: 1px solid rgba(156, 207, 255, 0.08);
+}
+
+main .list-group-item:hover {
+    border-color: rgba(156, 207, 255, 0.25);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Alerta cuando no hay categorías */
+main .alert-info {
+    background: var(--card-bg);
+    border: 1px solid rgba(156, 207, 255, 0.2);
+    border-radius: 20px;
+    color: var(--sky);
+    backdrop-filter: blur(10px);
+}
+
+/* Botón Volver al inicio */
+main .btn-primary {
+    background: var(--coral);
+    border: none;
+    color: white;
+    font-weight: 700;
+    padding: 14px 32px;
+    border-radius: 100px;
+    transition: all 0.3s ease;
+}
+
+main .btn-primary:hover {
+    background: var(--sky);
+    color: var(--dark-petrol);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+

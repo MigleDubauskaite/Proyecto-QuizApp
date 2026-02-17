@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error [[${status}]]</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff3e0;
+            text-align: center;
+            padding-top: 80px;
+        }
+        h1 {
+            font-size: 80px;
+            color: #e53935;
+        }
+        p {
+            font-size: 18px;
+            color: #444;
+        }
+        .info {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+        a {
+            display: inline-block;
+            margin-top: 30px;
+            text-decoration: none;
+            background-color: #4caf50;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 th:text="${status}">500</h1>
+
+    <p>
+        <strong th:text="${error}">Internal Server Error</strong>
+    </p>
+
+    <p>
+        Ha ocurrido un error inesperado en el servidor 😵  
+        Por favor, inténtalo de nuevo más tarde.
+    </p>
+
+    <div class="info">
+        <p>Ruta: <span th:text="${path}">/ruta</span></p>
+        <p>Fecha: <span th:text="${timestamp}">timestamp</span></p>
+        <p th:if="${message}">
+            Detalle: <span th:text="${message}"></span>
+        </p>
+    </div>
+
+    <a href="/">Volver al inicio</a>
+
+</body>
+</html>

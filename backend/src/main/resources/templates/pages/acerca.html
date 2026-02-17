@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acerca de - Quiz App</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/acerca.css}">
+</head>
+<body>
+    <header th:replace="~{layout/base :: header-comun}"></header>
+
+    <main class="container my-5">
+        <h1 class="mb-4">Acerca de Quiz App</h1>
+        <p class="lead">
+            Aplicación para gestionar preguntas y realizar evaluaciones sobre temas específicos.
+        </p>
+        <hr>
+        <p>
+            Puedes elegir categorías, tipos de pregunta (Verdadero/Falso, respuesta única o múltiple) y el número de preguntas por partida. Los resultados se guardan por usuario.
+        </p>
+        <p>
+            <strong>Quiz App</strong> — Proyecto Spring Boot con Thymeleaf, MySQL, MongoDB y API REST.
+        </p>
+
+        <p class="mt-4">
+            <a th:href="@{/home}" class="btn btn-primary">Volver al inicio</a>
+        </p>
+    </main>
+
+    <footer th:replace="~{layout/base :: footer-comun}"></footer>
+</body>
+</html>

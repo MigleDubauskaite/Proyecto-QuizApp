@@ -1,0 +1,321 @@
+:root {
+    --coral: #FF5B5B;
+    --sky: #9CCFFF;
+    --petrol: #088395;
+    --dark-petrol: #043e47;
+    --card-bg: rgba(255, 255, 255, 0.08);
+    --hero-bg: #0d5660;
+    --form-bg: #043e47;
+    --body-bg: #032a30;
+}
+
+body {
+    background-color: var(--body-bg);
+    color: white;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.main-wrapper {
+    max-width: 640px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+}
+
+
+.main-wrapper ul,
+.main-wrapper ol {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+/* Zona superior: hero con color claramente distinto (más claro) */
+.content-section {
+    text-align: center;
+    padding: 48px 24px 40px;
+    background-color: var(--hero-bg);
+    border-bottom: 3px solid rgba(156, 207, 255, 0.25);
+}
+
+.main-logo {
+    background: linear-gradient(135deg, var(--coral) 0%, #e04a4a 100%);
+    width: 140px;
+    height: 64px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+    font-weight: 800;
+    font-size: 1.35rem;
+    letter-spacing: 0.02em;
+    box-shadow: 0 4px 24px rgba(255, 91, 91, 0.25);
+}
+
+.main-wrapper h1 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+}
+
+.text-sky {
+    color: var(--sky);
+    opacity: 0.85;
+    font-size: 0.95rem;
+}
+
+/* Zona del formulario: fondo más oscuro que el hero */
+.central-flow {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 24px 80px;
+    background-color: var(--form-bg);
+}
+
+/* Cards: bastante más claras para que se vean como bloques */
+.config-card {
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(156, 207, 255, 0.35);
+    border-radius: 20px;
+    padding: 28px 32px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 560px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.step-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    letter-spacing: 0.01em;
+}
+
+.badge-step {
+    background: var(--sky);
+    color: var(--dark-petrol);
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+
+/* Contenedores de opciones */
+.option-item {
+    list-style: none;
+}
+
+.options-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn-pill {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.25s ease;
+}
+
+.btn-pill:hover {
+    border-color: var(--sky);
+    color: var(--sky);
+}
+
+.btn-check:checked + .btn-pill {
+    background: var(--petrol) !important;
+    border-color: var(--petrol) !important;
+    color: white !important;
+    transform: scale(1.03);
+}
+
+.btn-check:checked + .variant-coral {
+    background: var(--coral) !important;
+    border-color: var(--coral) !important;
+}
+
+/* Cantidad en círculos */
+.quantity-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.quantity-item {
+    list-style: none;
+}
+
+.btn-circle {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 2px solid rgba(156, 207, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--sky);
+    transition: all 0.25s ease;
+}
+
+.btn-circle .val { font-size: 1.25rem; font-weight: 800; line-height: 1; }
+.btn-circle .lab { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+.btn-check:checked + .btn-circle {
+    border-color: var(--coral);
+    background: var(--coral);
+    color: white;
+    box-shadow: 0 4px 20px rgba(255, 91, 91, 0.25);
+}
+
+/* Botón Launch */
+.action-zone {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.btn-launch {
+    background: white;
+    color: var(--dark-petrol);
+    border: none;
+    padding: 16px 48px;
+    border-radius: 14px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+    transition: all 0.25s ease;
+}
+
+.btn-launch:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+    background: var(--sky);
+    color: var(--dark-petrol);
+}
+
+/* Footer Decoración */
+.divider-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(156, 207, 255, 0.2), transparent);
+    margin: 40px auto 20px;
+}
+
+.footer-text { color: var(--sky); opacity: 0.4; font-size: 0.8rem; }
+
+
+/* Importar Iconos de Google */
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0');
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Aplicar animación a las tarjetas */
+.config-card {
+    animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+/* Retraso escalonado (Stagger effect) */
+.config-card:nth-child(1) { animation-delay: 0.1s; }
+.config-card:nth-child(2) { animation-delay: 0.3s; }
+.config-card:nth-child(3) { animation-delay: 0.5s; }
+
+/* Estilo para los iconos que añadiremos */
+.step-icon {
+    font-family: 'Material Symbols Rounded';
+    font-size: 24px;
+    color: var(--sky);
+    margin-right: 10px;
+}
+
+.config-card:hover {
+    border-color: rgba(156, 207, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+/* Adaptación de la Navbar de Bootstrap al estilo Premium */
+.navbar {
+    background-color: rgba(8, 131, 149, 0.2) !important; /* Azul petróleo con transparencia */
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(156, 207, 255, 0.1);
+    padding: 15px 0;
+}
+
+.navbar-brand {
+    font-weight: 800;
+    color: var(--sky) !important;
+    letter-spacing: 1px;
+}
+
+.nav-link {
+    font-weight: 600;
+    color: white !important;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+    opacity: 1;
+    color: var(--coral) !important;
+}
+
+/* Footer: banda distinta */
+.main-wrapper footer {
+    background: rgba(0, 0, 0, 0.2);
+    padding-top: 24px;
+}
+
+footer hr {
+    border-top: 1px solid rgba(156, 207, 255, 0.15);
+    margin: 0 24px 20px;
+}
+
+footer p {
+    color: var(--sky);
+    opacity: 0.6;
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 0 24px 32px;
+}
+
+@keyframes pulse-subtle {
+    0%, 100% { box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15); }
+    50% { box-shadow: 0 4px 28px rgba(255, 255, 255, 0.25); }
+}
+
+.btn-launch {
+    animation: pulse-subtle 3s ease-in-out infinite;
+}

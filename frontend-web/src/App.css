@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0');
+
+:root {
+    --coral: #FF5B5B;
+    --sky: #9CCFFF;
+    --petrol: #088395;
+    --dark-petrol: #043e47;
+    --body-bg: #032a30;
+    --hero-bg: #0d5660;
+    --card-bg: rgba(255, 255, 255, 0.08);
+}
+
+body {
+    background-color: var(--body-bg);
+    background-image: radial-gradient(circle at 50% 0%, var(--hero-bg) 0%, var(--body-bg) 100%);
+    color: white;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.main-wrapper {
+    max-width: 640px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Utilitarios */
+.text-sky { color: var(--sky); }
+.text-coral { color: var(--coral); }
+
+/* Inputs Premium (Usados en Login) */
+.input-premium {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(156, 207, 255, 0.2) !important;
+    border-radius: 15px !important;
+    color: white !important;
+    padding: 12px 20px !important;
+}
+
+.input-premium:focus {
+    border-color: var(--sky) !important;
+    box-shadow: 0 0 15px rgba(156, 207, 255, 0.2) !important;
+    outline: none;
+}
+
+/* --- BOTONES ESTILIZADOS DEL LOGIN --- */
+.login-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaciado perfecto entre botones */
+    margin-top: 25px;
+}
+
+/* --- LAYOUT CENTRALIZADO (ESTILO THYMELEAF) --- */
+.main-wrapper {
+    max-width: 640px; /* Ancho idéntico al que tenías en Thymeleaf */
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- HEADER PERSONALIZADO --- */
+.main-header .navbar {
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+}
+
+.brand-box {
+    box-shadow: 0 4px 12px rgba(255, 91, 91, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover .brand-box {
+    transform: rotate(-10 deg) scale(1.1);
+}
+
+.nav-link {
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--coral) !important;
+}
+
+/* --- BOTONES ESTILIZADOS DEL LOGIN --- */
+.login-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaciado perfecto entre botones */
+    margin-top: 25px;
+}
+
+/* Botón Principal: Entrar / Jugar */
+.btn-primary-custom {
+    background: white;
+    color: var(--dark-petrol);
+    border: none;
+    padding: 16px;
+    border-radius: 16px;
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn-primary-custom:hover {
+    background: var(--sky);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+}
+
+/* Botón Secundario: Crear Cuenta */
+.btn-secondary-custom {
+    background: rgba(156, 207, 255, 0.1);
+    color: var(--sky);
+    border: 2px solid rgba(156, 207, 255, 0.3);
+    padding: 14px;
+    border-radius: 16px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary-custom:hover {
+    background: rgba(156, 207, 255, 0.2);
+    border-color: var(--sky);
+    color: white;
+}
+
+/* Botón Terciario: Volver a Configuración */
+.btn-ghost-custom {
+    color: var(--sky);
+    background: transparent;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0.6;
+    transition: all 0.3s;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.btn-ghost-custom:hover {
+    opacity: 1;
+    letter-spacing: 0.5px;
+}
+
+/* --- FOOTER --- */
+.footer-text {
+    letter-spacing: 0.05em;
+}
+
+.divider-line {
+    opacity: 0.6;
+}
+
+/* --- HEADER ESTILO THYMELEAF (LIMPIO) --- */
+.bg-dark-quiz {
+    background-color: var(--dark-petrol) !important;
+    padding: 0.8rem 0;
+}
+
+/* Alineación del contenido del Header al mismo ancho que el wrapper */
+.header-container {
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar-brand {
+    font-weight: 800;
+    color: var(--sky) !important;
+    font-size: 1.25rem;
+    text-decoration: none;
+}
+
+.nav-link-custom {
+    color: white !important;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-left: 20px;
+    transition: opacity 0.2s;
+}
+
+/* El toque rojo coral de tu imagen */
+.nav-link-custom.active {
+    color: var(--coral) !important;
+}
+
+.nav-link-custom:hover {
+    opacity: 0.7;
+}
+
+/* Estilo específico para el link de perfil en el header */
+.profile-link {
+    background: rgba(156, 207, 255, 0.1); /* Un fondo suave color Sky */
+    padding: 6px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(156, 207, 255, 0.2);
+    margin-left: 25px !important; /* Separación extra */
+    transition: all 0.3s ease !important;
+}
+
+.profile-link:hover {
+    background: rgba(156, 207, 255, 0.2);
+    border-color: var(--sky);
+    color: var(--sky) !important;
+    opacity: 1 !important;
+}
+
+/* Ajuste para que el nav no se amontone en pantallas pequeñas */
+@media (max-width: 576px) {
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .nav-link-custom {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+/* --- FOOTER CENTRALIZADO --- */
+.main-footer {
+    text-align: center;
+    padding: 40px 0;
+    width: 100%;
+}
+
+.footer-hr {
+    border: 0;
+    border-top: 1px solid rgba(156, 207, 255, 0.2);
+    margin-bottom: 20px;
+}
+
+/* --- COMPLEMENTOS PARA PERFIL --- */
+.profile-avatar-wrapper {
+    background: rgba(156, 207, 255, 0.1);
+    color: var(--sky);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-avatar-wrapper .material-symbols-rounded {
+    font-size: 40px;
+}
+
+.category-icon-mini {
+    background: rgba(8, 131, 149, 0.2);
+    color: var(--petrol);
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.category-icon-mini .material-symbols-rounded {
+    font-size: 20px;
+}
+
+.badge-points {
+    background: rgba(255, 91, 91, 0.15);
+    color: var(--coral);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255, 91, 91, 0.2);
+}
+
+.animate-fadeIn {
+    animation: fadeInUp 0.5s ease forwards;
+}

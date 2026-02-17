@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: quiz-app
+  # ---------- MySQL ----------
+  datasource:
+    url: jdbc:mysql://localhost:3306/preguntas_db?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+    username: springuser
+    password: spring123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQLDialect # Fuerza el dialecto aquí
+    properties:
+      hibernate:
+        format_sql: true
+
+  # ---------- MongoDB ----------
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/preguntas_mongo_db
+
+# --- Tu secreto JWT ---
+jwt:
+  secret: admin1234

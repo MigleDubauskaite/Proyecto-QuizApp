@@ -1,0 +1,102 @@
+:root {
+    --coral: #FF5B5B;
+    --sky: #9CCFFF;
+    --petrol: #088395;
+    --dark-petrol: #043e47;
+    --card-bg: rgba(255, 255, 255, 0.05);
+}
+
+body {
+    background-color: var(--dark-petrol);
+    background-image: radial-gradient(circle at 50% 0%, #0a5c68 0%, var(--dark-petrol) 70%);
+    color: white;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+}
+
+main.container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+main h1 {
+    color: white;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+main .lead {
+    color: var(--sky);
+    opacity: 0.9;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+main hr {
+    border-top: 1px solid rgba(156, 207, 255, 0.2);
+    margin: 2rem 0;
+}
+
+main p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+}
+
+main p strong {
+    color: var(--coral);
+}
+
+main .btn-primary {
+    background: var(--coral);
+    border: none;
+    color: white;
+    font-weight: 700;
+    padding: 14px 32px;
+    border-radius: 100px;
+    transition: all 0.3s ease;
+}
+
+main .btn-primary:hover {
+    background: var(--sky);
+    color: var(--dark-petrol);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.navbar {
+    background-color: rgba(8, 131, 149, 0.2) !important;
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(156, 207, 255, 0.1);
+}
+
+.navbar-brand {
+    font-weight: 800;
+    color: var(--sky) !important;
+}
+
+.nav-link {
+    font-weight: 600;
+    color: white !important;
+    opacity: 0.7;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    opacity: 1;
+    color: var(--coral) !important;
+}
+
+footer hr {
+    border-top: 1px solid rgba(156, 207, 255, 0.1);
+    margin: 40px 0 20px 0;
+}
+
+footer p {
+    color: var(--sky);
+    opacity: 0.5;
+    font-size: 0.85rem;
+    text-align: center;
+}
