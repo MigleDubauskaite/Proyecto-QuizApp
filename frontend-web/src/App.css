@@ -285,3 +285,8 @@ body {
 .animate-fadeIn {
     animation: fadeInUp 0.5s ease forwards;
 }
+
+.nav-link-custom.active {
+    color: var(--coral);
+    font-weight: 600; 
+}

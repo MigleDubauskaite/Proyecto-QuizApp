@@ -46,7 +46,7 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 // 1. Recursos públicos (Thymeleaf, estáticos y API de Auth)
                 .requestMatchers("/", "/home", "/jugar", "/categorias", "/acerca", "/css/**", "/js/**", "/img/**").permitAll()
-                .requestMatchers("/api/auth/**").permitAll()
+                .requestMatchers("/api/auth/**", "/api/movil/**").permitAll()
                 
                 // 2. --- Seguridad para MongoDB (Preguntas) ---
                 // El GET es necesario para que el Admin vea la lista y el Usuario pueda jugar
@@ -56,11 +56,11 @@ public class SecurityConfig {
                 // Al usar solo /api/preguntas/** sin especificar método, bloqueamos el resto para Admin
                 .requestMatchers("/api/preguntas/**").hasRole("ADMIN")
                 
-                .requestMatchers("/api/demo/**").hasRole("ADMIN")
-                
                 // 3. --- Seguridad para el Juego ---
                 // Usuarios y Admins pueden jugar
                 .requestMatchers("/api/juego/**").hasAnyRole("USER", "ADMIN")
+                
+                .requestMatchers("/api/demo/**").hasRole("ADMIN")
                 
                 // 4. Cualquier otra ruta requiere estar autenticado
                 .anyRequest().authenticated()
@@ -76,10 +76,11 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("http://localhost:5173", "http://localhost:3000"));
+        // Permitimos cualquier origen de forma segura para desarrollo
+        config.setAllowedOriginPatterns(List.of("*")); 
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        config.setAllowedHeaders(List.of("Authorization", "Content-Type"));
-        config.setAllowCredentials(true);
+        config.setAllowedHeaders(List.of("Authorization", "Content-Type", "Accept"));
+        config.setAllowCredentials(false); // Cambiado a TRUE
         
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
