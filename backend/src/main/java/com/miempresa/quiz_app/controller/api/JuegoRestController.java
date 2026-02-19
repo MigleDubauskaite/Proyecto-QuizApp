@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/juego")
 @CrossOrigin(origins = "http://localhost:5173")
-@Tag(name = "Juego", description = "Endpoints para gestionar partidas y historial del juego")
+@Tag(name = "Juego", description = "Endpoints para gestionar partidas y historial del juego.")
 public class JuegoRestController {
 
     private final JuegoService juegoService;

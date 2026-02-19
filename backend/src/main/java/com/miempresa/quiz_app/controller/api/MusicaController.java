@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/movil/musica") // Esta ruta ya es pública por tu SecurityConfig
+@RequestMapping("/api/movil/musica") 
 public class MusicaController {
 
     private final MusicaService musicaService;

@@ -2,7 +2,7 @@ package com.miempresa.quiz_app.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
-@Schema(description = "Modelo que representa la información de una canción para el reproductor")
+@Schema(description = "Modelo que representa la información de una canción para el reproductor.")
 public record MusicaDTO(
     @Schema(description = "ID único de la canción en Jamendo", example = "123456")
     String id,

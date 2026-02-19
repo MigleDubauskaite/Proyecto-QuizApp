@@ -18,7 +18,7 @@ import com.miempresa.quiz_app.repository.mysql.NotificacionRepository;
 
 @RestController
 @RequestMapping("/api/demo")
-@Tag(name = "Vistas Web", description = "Endpoints que devuelven páginas HTML (Thymeleaf)")
+@Tag(name = "Vistas Web", description = "Endpoints que devuelven páginas HTML (Thymeleaf).")
 public class DemoController {
 
     @Autowired

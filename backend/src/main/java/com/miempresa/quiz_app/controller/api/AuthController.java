@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/auth")
 @CrossOrigin(origins = "http://localhost:5173")
-@Tag(name = "Autenticación", description = "Endpoints para login, registro y comprobación de usuarios")
+@Tag(name = "Autenticación", description = "Endpoints para login, registro y comprobación de usuarios.")
 public class AuthController {
 
     private final UsuarioService usuarioService;
