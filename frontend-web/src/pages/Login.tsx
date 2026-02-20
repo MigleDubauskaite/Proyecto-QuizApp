@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import axios from "axios";
-import "../Login.css";
+import "../css/Login.css";
 import type {
   JuegoRequest,
   PartidaResponse,
@@ -18,12 +18,64 @@ export default function Login() {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState<string>("");
+  const [comprobandoSesion, setComprobandoSesion] = useState<boolean>(true);
 
   // --- NUEVO ESTADO PARA DETECCIÓN DE USUARIO ---
   const [existeUsuario, setExisteUsuario] = useState<boolean>(false);
 
   const categorias = searchParams.get("categorias")?.split(",").filter(Boolean) || [];
   const cantidad = parseInt(searchParams.get("cantidad") || "10");
+  const tiposParam = searchParams.get("tipos")?.split(",").filter(Boolean) || [];
+
+  // --- AUTO-LOGIN: Si ya hay sesión y venimos de configuración, iniciar partida directamente ---
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const nombreGuardado = localStorage.getItem("nombre");
+    const rol = localStorage.getItem("rol");
+
+    // Solo auto-iniciar si hay token, nombre, no es admin, y venimos con config (categorías o cantidad)
+    const vieneDeConfig = categorias.length > 0 || searchParams.get("cantidad") != null;
+    if (!token || !nombreGuardado || rol === "ROLE_ADMIN" || !vieneDeConfig) {
+      setComprobandoSesion(false);
+      return;
+    }
+
+    const iniciarConSesionGuardada = async () => {
+      try {
+        const juegoData: JuegoRequest = {
+          nombre: nombreGuardado,
+          categorias: categorias.length > 0 ? categorias : null,
+          tipos: tiposParam.length > 0 ? tiposParam : null,
+          cantidad,
+        };
+
+        localStorage.setItem("ultimaConfiguracion", JSON.stringify({
+          categorias: categorias.length > 0 ? categorias : null,
+          tipos: tiposParam.length > 0 ? tiposParam : null,
+          cantidad,
+        }));
+
+        const gameRes = await axios.post<PartidaResponse>(
+          "http://localhost:8080/api/juego/iniciar",
+          juegoData,
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+
+        navigate("/juego", { state: { partida: gameRes.data } });
+      } catch (err: any) {
+        // Token expirado o inválido: limpiar y mostrar formulario
+        if (err.response?.status === 401 || err.response?.status === 403) {
+          localStorage.removeItem("token");
+          localStorage.removeItem("nombre");
+          localStorage.removeItem("rol");
+        }
+      } finally {
+        setComprobandoSesion(false);
+      }
+    };
+
+    iniciarConSesionGuardada();
+  }, [searchParams, navigate, categorias, cantidad, tiposParam]);
 
   // --- EFECTO DE COMPROBACIÓN AUTOMÁTICA ---
   useEffect(() => {
@@ -88,8 +140,9 @@ export default function Login() {
         loginData,
       );
 
-      const { token, rol } = authRes.data;
+      const { token, nombre: nombreUsuario, rol } = authRes.data;
       localStorage.setItem("token", token);
+      localStorage.setItem("nombre", nombreUsuario);
       localStorage.setItem("rol", rol);
 
       if (rol === "ROLE_ADMIN") {
@@ -104,6 +157,13 @@ export default function Login() {
         cantidad,
       };
 
+      // Guardar configuración en localStorage para poder reutilizarla después
+      localStorage.setItem('ultimaConfiguracion', JSON.stringify({
+        categorias: categorias.length > 0 ? categorias : null,
+        tipos: null,
+        cantidad,
+      }));
+
       const gameRes = await axios.post<PartidaResponse>(
         "http://localhost:8080/api/juego/iniciar",
         juegoData,
@@ -117,6 +177,17 @@ export default function Login() {
       setLoading(false);
     }
   };
+
+  if (comprobandoSesion) {
+    return (
+      <div className="login-bg d-flex align-items-center justify-content-center p-3 min-vh-100">
+        <div className="text-center text-white">
+          <div className="spinner-border text-sky mb-3" role="status" style={{ width: "3rem", height: "3rem" }}></div>
+          <p className="text-sky mb-0">Comprobando sesión...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="login-bg d-flex align-items-center justify-content-center p-3">
@@ -160,9 +231,9 @@ export default function Login() {
               {loading ? (
                 <span className="spinner-border spinner-border-sm"></span>
               ) : nombre.trim().toLowerCase() === "admin" ? (
-                "ACCEDER AL PANEL 🛠️"
+                "ACCEDER AL PANEL"
               ) : existeUsuario ? (
-                "ENTRAR A JUGAR 🚀"
+                "ENTRAR A JUGAR"
               ) : (
                 "IDENTIFICARSE"
               )}

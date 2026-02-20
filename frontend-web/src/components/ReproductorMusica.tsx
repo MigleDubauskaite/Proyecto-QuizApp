@@ -3,7 +3,9 @@ import axios from 'axios';
 
 export default function ReproductorMusica() {
   const [cancion, setCancion] = useState<any>(null);
-  const [estaSilenciado, setEstaSilenciado] = useState(false);
+  const [estaSilenciado, setEstaSilenciado] = useState(
+    localStorage.getItem('musica_mute') === 'true'
+  );
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const traerMusicaTranquila = async () => {
@@ -11,20 +13,52 @@ export default function ReproductorMusica() {
       const response = await axios.get('http://localhost:8080/api/movil/musica/buscar', {
         headers: { 'Authorization': '' }
       });
-      setCancion(response.data);
+      const nuevaCancion = response.data;
+      setCancion(nuevaCancion);
+      
+      // Guardamos la nueva canción para que si vuelves a Thymeleaf, sepa cuál es
+      localStorage.setItem('musica_url', nuevaCancion.urlAudio);
+      localStorage.setItem('musica_titulo', nuevaCancion.titulo); // Opcional para debug
     } catch (error) {
       console.error("Error al obtener música:", error);
     }
   };
 
   useEffect(() => {
-    traerMusicaTranquila();
+    const urlGuardada = localStorage.getItem('musica_url');
+    const tiempoGuardado = localStorage.getItem('musica_tiempo');
+
+    if (urlGuardada) {
+      // Si ya hay una canción en el almacenamiento, la cargamos directamente
+      setCancion({ urlAudio: urlGuardada });
+      
+      // Esperamos un microsegundo a que el elemento audio exista para ponerle el tiempo
+      setTimeout(() => {
+        if (audioRef.current) {
+          audioRef.current.currentTime = parseFloat(tiempoGuardado || "0");
+        }
+      }, 100);
+    } else {
+      // Si no hay nada, pedimos una nueva
+      traerMusicaTranquila();
+    }
+
+    // Intervalo para guardar el progreso (igual que en JS puro)
+    const intervalo = setInterval(() => {
+      if (audioRef.current && !audioRef.current.paused) {
+        localStorage.setItem('musica_tiempo', audioRef.current.currentTime.toString());
+      }
+    }, 1000);
+
+    return () => clearInterval(intervalo);
   }, []);
 
   const toggleMute = () => {
     if (audioRef.current) {
-      audioRef.current.muted = !audioRef.current.muted;
-      setEstaSilenciado(audioRef.current.muted);
+      const nuevoEstadoMute = !audioRef.current.muted;
+      audioRef.current.muted = nuevoEstadoMute;
+      setEstaSilenciado(nuevoEstadoMute);
+      localStorage.setItem('musica_mute', nuevoEstadoMute.toString());
     }
   };
 
@@ -32,13 +66,15 @@ export default function ReproductorMusica() {
 
   return (
     <div className="posicion-altavoz-fijo" style={{ position: 'fixed', bottom: '20px', right: '20px', zIndex: 1000 }}>
-      {/* El audio está oculto, solo queremos su funcionalidad */}
       <audio 
         ref={audioRef}
         src={cancion.urlAudio} 
         autoPlay 
-        loop // Para que la música tranquila no pare
-        onEnded={traerMusicaTranquila} // Si termina, busca otra
+        muted={estaSilenciado}
+        onEnded={() => {
+          localStorage.removeItem('musica_url');
+          traerMusicaTranquila();
+        }}
       />
 
       <button 
@@ -47,20 +83,13 @@ export default function ReproductorMusica() {
         style={{
           background: 'rgba(0, 0, 0, 0.6)',
           border: '1px solid rgba(255, 255, 255, 0.2)',
-          borderRadius: '50%',
-          width: '50px',
-          height: '50px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          cursor: 'pointer',
-          color: 'white',
-          backdropFilter: 'blur(5px)',
+          borderRadius: '50%', width: '50px', height: '50px',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          cursor: 'pointer', color: 'white', backdropFilter: 'blur(5px)',
           transition: 'all 0.3s ease'
         }}
-        title={estaSilenciado ? "Activar música" : "Silenciar música"}
       >
-        <span className="material-symbols-rounded" style={{ fontSize: '24px' }}>
+        <span className="material-symbols-rounded">
           {estaSilenciado ? 'volume_off' : 'volume_up'}
         </span>
       </button>

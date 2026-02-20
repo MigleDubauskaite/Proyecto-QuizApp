@@ -38,9 +38,6 @@ export function Header() {
               href={frontendBase + "/perfil"} 
               className="nav-link-custom profile-link d-flex align-items-center"
             >
-              <span className="material-symbols-rounded me-1" style={{ fontSize: '20px' }}>
-                account_circle
-              </span>
               Mi Perfil
             </a>
           )}

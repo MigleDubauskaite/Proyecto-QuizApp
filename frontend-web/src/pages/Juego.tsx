@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import '../Juego.css';
-import '../Indicadores.css';
+import '../css/Juego.css';
+import '../css/Indicadores.css';
 import type { PartidaResponse, PreguntaDTO, RespuestaResultadoDTO } from '../types/types';
 
 export default function Juego() {

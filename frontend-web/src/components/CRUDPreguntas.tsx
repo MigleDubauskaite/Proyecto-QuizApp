@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState, type FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import "../CrudPreguntas.css";
+import "../css/CrudPreguntas.css";
 import SeccionDemo from "./SeccionDemo";
 
 type TipoPregunta = "VF" | "UNICA" | "MULTIPLE";

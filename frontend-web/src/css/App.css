@@ -199,32 +199,214 @@ body {
     opacity: 0.7;
 }
 
-/* Estilo específico para el link de perfil en el header */
-.profile-link {
-    background: rgba(156, 207, 255, 0.1); /* Un fondo suave color Sky */
-    padding: 6px 14px;
+/* --- MEJORAS ESTRUCTURALES PERFIL --- */
+
+/* Contenedor de la cabecera del perfil */
+.profile-header-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);
+    border: 1px solid rgba(156, 207, 255, 0.1);
+    border-radius: 24px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+}
+
+/* Grid de estadísticas más limpio */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.stat-item {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(156, 207, 255, 0.05);
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    border-color: rgba(156, 207, 255, 0.2);
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.6;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--sky);
+}
+
+/* Historial: Tarjetas más compactas y elegantes */
+.history-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    transition: all 0.2s ease;
+}
+
+.history-card:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(156, 207, 255, 0.2);
+    transform: scale(1.01);
+}
+
+/* --- NUEVA LÍNEA DE TIEMPO DE HISTORIAL --- */
+.history-section {
+    padding-top: 10px;
+}
+
+.history-timeline {
+    position: relative;
+    padding-left: 20px;
+}
+
+/* Línea vertical decorativa */
+.history-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    bottom: 10px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--sky), transparent);
+    opacity: 0.3;
+}
+
+.history-item {
+    position: relative;
+    padding-bottom: 25px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+/* El punto de la línea de tiempo */
+.history-dot {
+    position: absolute;
+    left: -24px; /* Ajustado para caer sobre la línea */
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--sky);
+    box-shadow: 0 0 10px var(--sky);
+}
+
+.history-content {
+    flex-grow: 1;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(156, 207, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.history-content:hover {
+    background: rgba(156, 207, 255, 0.08);
+    border-color: rgba(156, 207, 255, 0.3);
+    transform: translateX(5px);
+}
+
+/* Info de la partida */
+.history-info-main {
+    display: flex;
+    flex-direction: column;
+}
+
+.history-category {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: white;
+    margin: 0;
+}
+
+.history-meta {
+    font-size: 0.8rem;
+    color: var(--sky);
+    opacity: 0.8;
+    display: flex;
+    gap: 10px;
+}
+
+/* Puntuación destacada */
+.history-score-wrapper {
+    text-align: right;
+    min-width: 80px;
+}
+
+.history-score-big {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--coral);
+    line-height: 1;
+    display: block;
+}
+
+.history-score-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0.6;
+}
+
+/* Botón Logout Ajustado */
+.btn-logout-perfil {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 91, 91, 0.1);
+    border: 1px solid rgba(255, 91, 91, 0.2);
+    color: var(--coral);
+    padding: 6px 12px;
     border-radius: 10px;
-    border: 1px solid rgba(156, 207, 255, 0.2);
-    margin-left: 25px !important; /* Separación extra */
-    transition: all 0.3s ease !important;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.profile-link:hover {
-    background: rgba(156, 207, 255, 0.2);
-    border-color: var(--sky);
-    color: var(--sky) !important;
-    opacity: 1 !important;
+.btn-logout-perfil:hover {
+    background: var(--coral);
+    color: white;
+    box-shadow: 0 4px 12px rgba(255, 91, 91, 0.3);
 }
 
-/* Ajuste para que el nav no se amontone en pantallas pequeñas */
-@media (max-width: 576px) {
-    .header-container {
-        flex-direction: column;
-        gap: 15px;
+/* Ajuste para móviles */
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
     }
-    .nav-link-custom {
-        margin-left: 10px;
-        margin-right: 10px;
+    .profile-header-card {
+        padding: 20px;
+        text-align: center;
+    }
+    .profile-header-card .d-flex {
+        flex-direction: column;
+    }
+    .btn-logout-perfil {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-bottom: 20px;
+        justify-content: center;
     }
 }
 

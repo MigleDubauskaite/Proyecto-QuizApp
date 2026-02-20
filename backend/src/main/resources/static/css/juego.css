@@ -18,11 +18,10 @@ body {
 }
 
 .main-wrapper {
-    max-width: 640px;
+    max-width: 1140px;
     width: 100%;
     margin: 0 auto;
-    padding: 0;
-    text-align: center;
+    padding: 40px 16px;
 }
 
 
@@ -37,8 +36,8 @@ body {
 .content-section {
     text-align: center;
     padding: 48px 24px 40px;
-    background-color: var(--hero-bg);
-    border-bottom: 3px solid rgba(156, 207, 255, 0.25);
+    background-color: transparent;
+    border-bottom: none;
 }
 
 .main-logo {
@@ -74,9 +73,9 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 32px 24px 80px;
-    background-color: var(--form-bg);
+    align-items: stretch;
+    padding: 32px 0 40px;
+    background-color: transparent;
 }
 
 /* Cards: bastante más claras para que se vean como bloques */
@@ -268,6 +267,8 @@ body {
 
 /* Adaptación de la Navbar de Bootstrap al estilo Premium */
 .navbar {
+    position: relative;
+    z-index: 1030;
     background-color: rgba(8, 131, 149, 0.2) !important; /* Azul petróleo con transparencia */
     backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(156, 207, 255, 0.1);
@@ -318,4 +319,35 @@ footer p {
 
 .btn-launch {
     animation: pulse-subtle 3s ease-in-out infinite;
+}
+
+/* ============================================
+   REPRODUCTOR DE MÚSICA FLOTANTE
+   ============================================ */
+.btn-musica-fixed {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 55px;
+    height: 55px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(0, 212, 255, 0.5);
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-musica-fixed:hover {
+    transform: scale(1.1);
+    border-color: #00d4ff;
+}
+
+.btn-musica-fixed .material-symbols-rounded {
+    font-size: 24px;
+    line-height: 1;
 }
