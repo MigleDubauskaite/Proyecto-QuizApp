@@ -5,11 +5,15 @@ backend/target/
 backend/build/
 backend/out/
 backend/*.log
+backend/logs/
 backend/.idea/
 backend/.classpath
 backend/.project
 backend/.settings/
 backend/.factorypath
+backend/bin/
+backend/*.jar
+backend/*.war
 
 ############################################
 # 🟡 REACT (FRONTEND-WEB)
@@ -20,6 +24,9 @@ frontend-web/build/
 frontend-web/.env*
 !frontend-web/.env.example
 frontend-web/npm-debug.log*
+frontend-web/yarn-debug.log*
+frontend-web/yarn-error.log*
+frontend-web/.cache/
 
 ############################################
 # 🟢 REACT NATIVE (FRONTEND-MOVIL)
@@ -30,19 +37,33 @@ frontend-movil/.metro-cache/
 frontend-movil/android/build/
 frontend-movil/ios/build/
 frontend-movil/.env*
+frontend-movil/npm-debug.log*
 # Seguridad: Llaves de firmado y certificados
 frontend-movil/**/*.jks
 frontend-movil/**/*.keystore
+frontend-movil/android/.gradle/
+frontend-movil/ios/Pods/
+frontend-movil/ios/DerivedData/
 
 ############################################
-# ⚙️ GENERAL & DOCKER
+# ⚙️ GENERAL, IDEs & OS
 ############################################
 .env
+.env.local
 .DS_Store
+.AppleDouble
+.LSOverride
 Thumbs.db
+Desktop.ini
 .idea/
 .vscode/
+*.suo
+*.user
+*.userosscache
+*.sln
+*.swp
 
-# Datos de contenedores (Base de datos local)
+# Bases de Datos / Docker
 mysql-data/
 mongo-data/
+docker-compose.override.yml
