@@ -5,62 +5,44 @@ backend/target/
 backend/build/
 backend/out/
 backend/*.log
-backend/logs/
 backend/.idea/
 backend/.classpath
 backend/.project
 backend/.settings/
 backend/.factorypath
-# Descomenta la siguiente línea si NO quieres subir el Maven Wrapper
-# backend/.mvn/wrapper/maven-wrapper.jar
 
 ############################################
-# 🟡 REACT (FRONTEND WEB)
+# 🟡 REACT (FRONTEND-WEB)
 ############################################
 frontend-web/node_modules/
-frontend-web/build/
 frontend-web/dist/
+frontend-web/build/
 frontend-web/.env*
 !frontend-web/.env.example
-frontend-web/.cache/
-frontend-web/coverage/
 frontend-web/npm-debug.log*
-frontend-web/yarn-debug.log*
-frontend-web/yarn-error.log*
 
 ############################################
-# 🟢 REACT NATIVE (MOBILE)
+# 🟢 REACT NATIVE (FRONTEND-MOVIL)
 ############################################
-mobile-app/node_modules/
-mobile-app/android/build/
-mobile-app/ios/build/
-mobile-app/.expo/
-mobile-app/.env*
-mobile-app/.metro-cache/
-mobile-app/android/.gradle/
-mobile-app/android/app/build/
-mobile-app/ios/Pods/
-mobile-app/ios/DerivedData/
-# Seguridad: Llaves de firmado
-mobile-app/**/*.jks
-mobile-app/**/*.keystore
+frontend-movil/node_modules/
+frontend-movil/.expo/
+frontend-movil/.metro-cache/
+frontend-movil/android/build/
+frontend-movil/ios/build/
+frontend-movil/.env*
+# Seguridad: Llaves de firmado y certificados
+frontend-movil/**/*.jks
+frontend-movil/**/*.keystore
 
 ############################################
-# ⚙️ GENERAL
+# ⚙️ GENERAL & DOCKER
 ############################################
 .env
-.env.local
-.env.stack
 .DS_Store
 Thumbs.db
-*.log
 .idea/
 .vscode/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
 
-# Bases de Datos / Docker
+# Datos de contenedores (Base de datos local)
 mysql-data/
 mongo-data/
