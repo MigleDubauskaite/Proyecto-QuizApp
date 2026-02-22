@@ -29,12 +29,12 @@ public class Partida {
     private List<String> categorias = new ArrayList<>();
     
     @ElementCollection
-    @Enumerated(EnumType.STRING) // Importante para guardar el texto del Enum y no el índice
+    @Enumerated(EnumType.STRING)
     @CollectionTable(name = "partida_tipos", joinColumns = @JoinColumn(name = "partida_id"))
     @Column(name = "tipo")
     private List<Pregunta.TipoPregunta> tipos = new ArrayList<>();
 
-    @ElementCollection                           // IDs de preguntas de MongoDB
+    @ElementCollection  // IDs de preguntas de MongoDB
     @CollectionTable(name = "partida_preguntas", joinColumns = @JoinColumn(name = "partida_id"))
     @Column(name = "pregunta_id")
     private List<String> preguntaIds;

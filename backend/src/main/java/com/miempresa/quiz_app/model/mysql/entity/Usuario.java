@@ -42,6 +42,10 @@ public class Usuario implements UserDetails {
     public Usuario() {}
 
     // --- MÉTODOS DE USERDETAILS (SPRING SECURITY) ---
+    /*
+     * Es el mecanismo que conecta tus datos (lo que hay en la tabla de MySQL) 
+     * con el motor de seguridad de Spring.
+     */
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

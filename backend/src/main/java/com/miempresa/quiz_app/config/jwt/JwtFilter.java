@@ -34,8 +34,6 @@ public class JwtFilter extends OncePerRequestFilter {
 																// React
 			HttpServletResponse response, // Es lo que el servidor le devolverá a React.
 			FilterChain filterChain) throws ServletException, IOException {
-		
-		
 
 		String header = request.getHeader("Authorization");
 

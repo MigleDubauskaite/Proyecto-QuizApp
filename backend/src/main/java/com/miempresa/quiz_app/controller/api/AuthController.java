@@ -34,6 +34,7 @@ public class AuthController {
     })
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
+    	// Spring Boot toma el JSON que envía React y lo convierte automáticamente en un objeto LoginRequest
         try {
             LoginResponse response = usuarioService.autenticar(request.nombre(), request.password());
             return ResponseEntity.ok(response);
