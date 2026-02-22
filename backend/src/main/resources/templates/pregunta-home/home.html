@@ -46,7 +46,7 @@
             </h2>
             <div class="options-container">
                 <div th:each="tipo : ${tipos}" class="option-item">
-                    <input type="checkbox" class="btn-check" name="tiposStr"
+                    <input type="checkbox" class="btn-check" name="tipos"
                            th:id="'tipo-' + ${tipo}" th:value="${tipo}" autocomplete="off">
                     <label class="btn btn-pill variant-coral" th:for="'tipo-' + ${tipo}"
                            th:text="${tipo.name() == 'VF' ? 'Verdadero / Falso' :

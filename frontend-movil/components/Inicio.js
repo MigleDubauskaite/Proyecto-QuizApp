@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useNavigation } from '@react-navigation/native'; // <--- 1. IMPORTAR ESTO
+import { useNavigation } from '@react-navigation/native'; 
 import axios from 'axios';
 
 const COLORS = {
@@ -19,7 +19,7 @@ const COLORS = {
 };
 
 export default function Inicio() {
-  const navigation = useNavigation(); // <--- 2. INICIALIZAR NAVEGACIÓN
+  const navigation = useNavigation();
   const [opcionesDTO, setOpcionesDTO] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -28,7 +28,7 @@ export default function Inicio() {
   const [tipoSel, setTipoSel] = useState(null);
   const [cantidad, setCantidad] = useState(null);
 
-  const API_BASE = "http://192.168.0.191:8080/api/movil";
+  const API_BASE = "http://192.168.0.68:8080/api/movil";
 
   useEffect(() => {
     fetchOpciones();
@@ -64,7 +64,7 @@ export default function Inicio() {
 
       const response = await axios.post(`${API_BASE}/iniciar`, payload);
       
-      // <--- 3. EL CAMBIO CLAVE: NAVEGAR A LA OTRA PANTALLA ENVIANDO LOS DATOS
+      // NAVEGAR A LA OTRA PANTALLA ENVIANDO LOS DATOS
       navigation.navigate('Juego', { 
         preguntas: response.data.preguntas, 
         partidaId: response.data.partidaId 
@@ -85,8 +85,6 @@ export default function Inicio() {
       setCategoriasSel([...categoriasSel, cat]);
     }
   };
-
-  // --- 4. HEMOS ELIMINADO EL IF (juegoActivo) QUE HABÍA AQUÍ ---
 
   if (loading) {
     return (

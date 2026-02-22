@@ -27,7 +27,7 @@ export default function Juego() {
   const [correctas, setCorrectas] = useState([]);
 
   const preguntaActual = preguntas[indice];
-  const API_BASE = "http://192.168.0.191:8080/api/movil";
+  const API_BASE = "http://192.168.0.68:8080/api/movil";
 
   const enviarRespuesta = async (opcion) => {
     if (respondido) return;

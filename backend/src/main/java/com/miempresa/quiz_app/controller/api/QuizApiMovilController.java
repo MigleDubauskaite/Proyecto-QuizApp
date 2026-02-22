@@ -19,7 +19,7 @@ public class QuizApiMovilController {
 
     private final JuegoService juegoService;
     private final UsuarioRepository usuarioRepo;
-    private final BCryptPasswordEncoder passwordEncoder; // Añadido para seguridad coherente
+    private final BCryptPasswordEncoder passwordEncoder; 
 
     public QuizApiMovilController(JuegoService juegoService, 
                                  UsuarioRepository usuarioRepo, 
@@ -30,13 +30,11 @@ public class QuizApiMovilController {
     }
     
     @GetMapping("/opciones-quiz")
-
     public OpcionesQuizDTO obtenerOpcionesParaMovil() {
         // Llamamos a tu lógica de negocio que ya hace el .distinct() y saca los enums
         return juegoService.obtenerOpcionesDisponibles();
 
     }
-
 
     // 1. INICIAR: Crea la partida y devuelve las preguntas
     @PostMapping("/iniciar")

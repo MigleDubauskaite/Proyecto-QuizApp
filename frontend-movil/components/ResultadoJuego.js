@@ -22,7 +22,7 @@ export default function Resultado({ route, navigation }) {
 
   const fetchResumen = async () => {
     try {
-      const res = await axios.get(`http://192.168.0.191:8080/api/movil/finalizar/${partidaId}`);
+      const res = await axios.get(`http://192.168.0.68:8080/api/movil/finalizar/${partidaId}`);
       setResumen(res.data);
     } catch (error) {
       console.error("Error al obtener resumen", error);
